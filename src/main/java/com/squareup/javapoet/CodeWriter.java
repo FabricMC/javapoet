@@ -179,7 +179,7 @@ final class CodeWriter {
     if (modifiers.isEmpty()) return;
     for (Modifier modifier : EnumSet.copyOf(modifiers)) {
       if (implicitModifiers.contains(modifier)) continue;
-      emitAndIndent(modifier.name().toLowerCase(Locale.US));
+      emitAndIndent(modifier.toString());
       emitAndIndent(" ");
     }
   }

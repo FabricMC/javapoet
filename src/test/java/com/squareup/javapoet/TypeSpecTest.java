@@ -434,6 +434,28 @@ public final class TypeSpecTest {
         + "}\n");
   }
 
+  @Test
+  public void basicSealedClass() {
+    Modifier sealed;
+    try {
+      sealed = Modifier.valueOf("SEALED");
+    } catch (IllegalArgumentException ex) {
+      return;
+    }
+
+    TypeSpec rec = TypeSpec.classBuilder("BasicSealed")
+        .addModifiers(Modifier.PUBLIC, sealed)
+        .addPermittedSubclass(ClassName.get("com.squareup.tacos", "BasicChild"))
+        .build();
+
+    assertThat(toString(rec)).isEqualTo(""
+        + "package com.squareup.tacos;\n"
+        + "\n"
+        + "public sealed class BasicSealed permits BasicChild {\n"
+        + "}\n"
+    );
+  }
+
   @Test public void enumWithSubclassing() throws Exception {
     TypeSpec roshambo = TypeSpec.enumBuilder("Roshambo")
         .addModifiers(Modifier.PUBLIC)
