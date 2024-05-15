@@ -963,7 +963,8 @@ public final class TypeSpec {
 
       for (MethodSpec methodSpec : methodSpecs) {
         if (kind == Kind.INTERFACE) {
-          requireExactlyOneOf(methodSpec.modifiers, Modifier.PUBLIC, Modifier.PRIVATE);
+          checkState(!methodSpec.modifiers.contains(Modifier.PRIVATE) || !methodSpec.modifiers.contains(Modifier.PUBLIC),
+                "%s %s.%s cannot have both private and public", kind, name, methodSpec.name);
           if (methodSpec.modifiers.contains(Modifier.PRIVATE)) {
             checkState(!methodSpec.hasModifier(Modifier.DEFAULT),
                 "%s %s.%s cannot be private and default", kind, name, methodSpec.name);

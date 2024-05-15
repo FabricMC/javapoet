@@ -1053,7 +1053,7 @@ public final class TypeSpecTest {
               .build())
           .build();
       fail();
-    } catch (IllegalArgumentException expected) {
+    } catch (IllegalStateException expected) {
     }
   }
 
