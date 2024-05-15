@@ -11,7 +11,7 @@ group 'net.fabricmc'
 archivesBaseName = 'javapoet'
 
 def ENV = System.getenv()
-version '0.1.0' + (ENV.GITHUB_ACTIONS ? "" : "+local")
+version '0.1.1' + (ENV.GITHUB_ACTIONS ? "" : "+local")
 
 repositories {
     maven {
