@@ -105,7 +105,7 @@ public class FileReadingTest {
     CompilationTask task = compiler.getTask(null, 
         fileManager,
         diagnosticCollector,
-        Collections.emptySet(),
+        Collections.singletonList("-proc:none"),
         Collections.emptySet(),
         Collections.singleton(javaFile.toJavaFileObject()));
     
